@@ -6,11 +6,11 @@ Created as part of DroneDeploy Take Home test.
 
 Design Process:
 
-1.) Read through documentation, set up sample project
-2.) Use API to get Current Plan, Tiles, and annotations
-3.) Refactor code after confirmed working to optimize code
-4.) Implement Heroku to create the PDF File
-5.) Add zoom selection field, document code, clean up and refactor again
+1.) Read through documentation, set up sample project <br>
+2.) Use API to get Current Plan, Tiles, and annotations <br>
+3.) Refactor code after confirmed working to optimize code <br>
+4.) Implement Heroku to create the PDF File <br>
+5.) Add zoom selection field, document code, clean up and refactor again <br><br>
 
 Summary:
 
