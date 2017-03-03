@@ -11,7 +11,6 @@ Outputs/Effects
 function generatePdfFromTile() {
   console.log("called");
   dronedeploy.onload(function(){ dronedeploy.Track.successCondition()});
-  statusText.innerHTML = 'Generating PDF';
 	
   getCurrentViewedPlan()
     .then(function(plan){           getTilesFromPlan(plan)
@@ -50,7 +49,15 @@ Outputs/Effects
    Return the tiles from the plan object
 */
 function getTilesFromPlan(plan) {
-	return dronedeploy.Tiles.get({planId: plan.id, layerName: 'ortho', zoom: 20});
+  var zoom = zoomLevel.value;
+  if (zoom > 25) {
+    zoom = 16;
+  } else if (zoom < 16) {
+    zoom = 16;
+  }
+
+  zoom = Number(zoom);
+	return dronedeploy.Tiles.get({planId: plan.id, layerName: 'ortho', zoom: zoom});
 }
 /* 
 Function Name: getAnnotations
@@ -64,7 +71,6 @@ Outputs/Effects
 function getAnnotations(plan){
   return dronedeploy.Annotations.get(plan.id);
 }
-
 
 /* 
 Function Name: createAndSendAnnotationsWithData
@@ -155,7 +161,6 @@ Outputs/Effects
 function handleDataSent(planId) {
   var reportUrl = 'https://pdf-annotate.herokuapp.com/' + planId;
   createpdfbtn.removeEventListener('click', generatePdfFromTile);
-  statusText.innerHTML = 'View Map PDF';
   createpdfbtn.onclick = function() {
     openInNewTab(reportUrl);
   }
@@ -197,8 +202,8 @@ function onLoad() {
   createpdfbtn.addEventListener('click', generatePdfFromTile);
 };
 
-// sets tag for status label in index.html
-var statusText = document.getElementById("statusTxt");
+// sets tag for zoom level in index.html
+var zoomLevel = document.getElementById("zoom");
 
 // calls the 'onLoad' function to start the process
 dronedeploy.onload(onLoad);
