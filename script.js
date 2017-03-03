@@ -1,15 +1,3 @@
-// function loadAPI() {
-//   console.log('DroneDeploy Api: ', dronedeploy);
-//   // runs main function on click
-//   return new Promise((resolve) => {
-//     window.dronedeploy.onload(() => {
-//        createpdfbtn.addEventListener("click", generatePdfFromTile);
-//     });
-//   });
-
-// };
-
-var statusText = document.getElementById("statusTxt");
 
 /* 
 Function Name: generatePdfFromTile
@@ -36,7 +24,6 @@ function generatePdfFromTile() {
     });
 
 }
-
 
 /* 
 Function Name: getCurrentViewedPlan
@@ -209,6 +196,9 @@ Outputs/Effects
 function onLoad() {
   createpdfbtn.addEventListener('click', generatePdfFromTile);
 };
+
+// sets tag for status label in index.html
+var statusText = document.getElementById("statusTxt");
 
 // calls the 'onLoad' function to start the process
 dronedeploy.onload(onLoad);
